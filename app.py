@@ -29,6 +29,14 @@ def load_models():
         print("ERROR: Model files not found. Please run train_model.py first.")
         raise
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({
+        'status': 'online',
+        'message': 'Smart Hospital ML API is live on Railway',
+        'endpoints': ['/health', '/predict', '/info']
+    }), 200
+
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({
